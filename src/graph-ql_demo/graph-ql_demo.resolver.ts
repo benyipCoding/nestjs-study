@@ -3,6 +3,7 @@ import { GraphQlDemoService } from './graph-ql_demo.service';
 import { GraphQlDemo } from './entities/graph-ql_demo.entity';
 import { CreateGraphQlDemoInput } from './dto/create-graph-ql_demo.input';
 import { UpdateGraphQlDemoInput } from './dto/update-graph-ql_demo.input';
+import { Public } from 'src/decorator/public.decorator';
 
 @Resolver(() => GraphQlDemo)
 export class GraphQlDemoResolver {
@@ -16,6 +17,7 @@ export class GraphQlDemoResolver {
     return this.graphQlDemoService.create(createGraphQlDemoInput);
   }
 
+  @Public()
   @Query(() => [GraphQlDemo], { name: 'graphQlDemo' })
   findAll() {
     return this.graphQlDemoService.findAll();
